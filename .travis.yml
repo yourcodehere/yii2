@@ -20,11 +20,6 @@ install:
   - tests/unit/data/travis/apc-setup.sh
   - tests/unit/data/travis/memcache-setup.sh
   - tests/unit/data/travis/cubrid-setup.sh
-# basic application:
-  - composer install --dev --prefer-dist -d apps/basic
-  - cd apps/basic && composer require --dev "codeception/codeception: 1.8.*@dev" "codeception/specify: *" "codeception/verify: *"
-  - cd apps/basic && php vendor/bin/codecept build && cd ../..
-  - cd apps && php -S localhost:8080 &
 
 before_script:
   - echo 'elasticsearch version ' && curl http://localhost:9200/
@@ -36,7 +31,6 @@ before_script:
 script:
 #  - vendor/bin/phpunit --coverage-clover tests/unit/runtime/coveralls/clover.xml --verbose --exclude-group mssql,oci,wincache,xcache,zenddata,vendor
   - vendor/bin/phpunit --verbose --exclude-group mssql,oci,wincache,xcache,zenddata,vendor
-  - cd apps/basic && php vendor/bin/codecept run
 
 #after_script:
 #  - php vendor/bin/coveralls
