@@ -7,7 +7,6 @@ php:
 
 services:
   - redis-server
-  - memcached
   - elasticsearch
   - mongodb
 
