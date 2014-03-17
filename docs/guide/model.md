@@ -325,7 +325,7 @@ class User extends ActiveRecord
 }
 ```
 
-For the code above mass assignment will be allowed stsrictly according to `scenarios()`:
+For the code above mass assignment will be allowed strictly according to `scenarios()`:
 
 ```php
 $user = User::find(42);
