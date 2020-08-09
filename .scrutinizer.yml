@@ -1,5 +1,18 @@
-imports:
-    - php
+build:
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
+
+filter:
+  excluded_paths:
+    - "tests/"
+    - "build/"
+    - "docs/"
+    - "framework/messages/"
+  dependency_paths:
+    - "vendor/"
 
 tools:
     external_code_coverage:

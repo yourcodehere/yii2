@@ -8,48 +8,29 @@
 namespace yii\rbac;
 
 use Yii;
-use yii\base\Object;
+use yii\base\BaseObject;
 
 /**
  * Assignment represents an assignment of a role to a user.
- * It includes additional assignment information such as [[bizRule]] and [[data]].
- * Do not create a Assignment instance using the 'new' operator.
- * Instead, call [[Manager::assign()]].
+ *
+ * For more details and usage information on Assignment, see the [guide article on security authorization](guide:security-authorization).
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @author Alexander Kochetov <creocoder@gmail.com>
  * @since 2.0
  */
-class Assignment extends Object
+class Assignment extends BaseObject
 {
-	/**
-	 * @var Manager the auth manager of this item
-	 */
-	public $manager;
-	/**
-	 * @var string the business rule associated with this assignment
-	 */
-	public $bizRule;
-	/**
-	 * @var mixed additional data for this assignment
-	 */
-	public $data;
-	/**
-	 * @var mixed user ID (see [[\yii\web\User::id]]). Do not modify this property after it is populated.
-	 * To modify the user ID of an assignment, you must remove the assignment and create a new one.
-	 */
-	public $userId;
-	/**
-	 * @return string the authorization item name. Do not modify this property after it is populated.
-	 * To modify the item name of an assignment, you must remove the assignment and create a new one.
-	 */
-	public $itemName;
-
-	/**
-	 * Saves the changes to an authorization assignment.
-	 */
-	public function save()
-	{
-		$this->manager->saveAssignment($this);
-	}
+    /**
+     * @var string|int user ID (see [[\yii\web\User::id]])
+     */
+    public $userId;
+    /**
+     * @var string the role name
+     */
+    public $roleName;
+    /**
+     * @var int UNIX timestamp representing the assignment creation time
+     */
+    public $createdAt;
 }

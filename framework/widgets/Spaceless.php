@@ -32,7 +32,7 @@ use yii\base\Widget;
  *
  * ```html
  * <body>
- *     <div class="navbar"><!-- other tags --></div><div class="content"><!-- other tags --></div></body>
+ *     <div class="nav-bar"><!-- tags --></div><div class="content"><!-- tags --></div></body>
  * ```
  *
  * This method is not designed for content compression (you should use `gzip` output compression to
@@ -49,21 +49,22 @@ use yii\base\Widget;
  */
 class Spaceless extends Widget
 {
-	/**
-	 * Starts capturing an output to be cleaned from whitespace characters between HTML tags.
-	 */
-	public function init()
-	{
-		ob_start();
-		ob_implicit_flush(false);
-	}
+    /**
+     * Starts capturing an output to be cleaned from whitespace characters between HTML tags.
+     */
+    public function init()
+    {
+        parent::init();
+        ob_start();
+        ob_implicit_flush(false);
+    }
 
-	/**
-	 * Marks the end of content to be cleaned from whitespace characters between HTML tags.
-	 * Stops capturing an output and echoes cleaned result.
-	 */
-	public function run()
-	{
-		echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));
-	}
+    /**
+     * Marks the end of content to be cleaned from whitespace characters between HTML tags.
+     * Stops capturing an output and echoes cleaned result.
+     */
+    public function run()
+    {
+        echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));
+    }
 }
